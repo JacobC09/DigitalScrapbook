@@ -1,0 +1,225 @@
+﻿:root {
+    --color-page-text: #241d16;
+    --color-page-bg: #a77443;
+    --item-shadow: rgba(53, 34, 17, 0.18);
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--color-page-text);
+    background-color: var(--color-page-bg);
+}
+
+#scrapbook {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    border: 0;
+    background: url("assets/bg.jpg");
+    isolation: isolate;
+}
+
+#scrapbook::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background: rgba(22, 14, 8, 0.55);
+    opacity: 0;
+    transition: opacity 0.28s ease;
+    pointer-events: none;
+}
+
+body.has-selection #scrapbook::before {
+    opacity: 1;
+}
+
+#scrapbook img {
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    user-select: none;
+    transform-origin: center center;
+    transition:
+        filter 0.28s ease,
+        opacity 0.28s ease,
+        transform 0.28s ease,
+        outline-color 0.28s ease,
+        box-shadow 0.28s ease;
+    filter: var(--item-shadow, none);
+}
+
+body.has-selection #scrapbook img:not(.selected) {
+    filter: brightness(0.38) saturate(0.55) contrast(0.88) var(--item-shadow, none);
+    opacity: 0.38;
+}
+
+body.has-selection #scrapbook img.selected {
+    z-index: 5;
+    opacity: 1;
+    filter: var(--item-shadow, none) !important;
+    outline: 4px dashed rgba(193, 57, 49, 0.82);
+    box-shadow: 0 0 0 12px rgba(255, 246, 233, 0.08);
+}
+
+.object-panel {
+    position: fixed;
+    z-index: 6;
+    right: 36px;
+    bottom: 36px;
+    width: min(28rem, calc(100vw - 72px));
+    padding: 18px 20px 16px 18px;
+    background: rgba(255, 244, 230, 0.93);
+    border: 2px solid rgba(214, 185, 143, 0.9);
+    border-right: 6px solid rgba(184, 143, 90, 0.95);
+    border-radius: 14px;
+    box-shadow: 6px 6px 0 rgba(184, 143, 90, 0.8), 14px 18px 30px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    transform: translateX(26px) rotate(1.5deg);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.object-panel.is-visible {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg);
+    pointer-events: auto;
+}
+
+.object-panel::after {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 2px dashed rgba(92, 67, 43, 0.28);
+    border-radius: 9px;
+    pointer-events: none;
+}
+
+.object-panel .subtitle {
+    margin: 0 0 10px;
+    font-family: "Courier New", monospace;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #7a5b3a;
+}
+
+.object-panel h2 {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 2.1rem;
+    line-height: 0.98;
+    color: #2a1d12;
+}
+
+.object-panel .object-kind {
+    margin: 10px 0 0;
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 0.95rem;
+    color: #8f5f32;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.object-panel .object-description {
+    margin: 10px 0 0;
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: rgba(42, 29, 18, 0.9);
+}
+
+.object-panel .object-meta {
+    margin: 14px 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 14px;
+    font-family: "Trebuchet MS", sans-serif;
+}
+
+.object-panel .object-meta div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.object-panel .object-meta dt {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(122, 91, 58, 0.92);
+}
+
+.object-panel .object-meta dd {
+    margin: 0;
+    font-size: 0.92rem;
+    color: #2a1d12;
+}
+
+.tl {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    z-index: 2;
+}
+
+body.has-selection .tl {
+    z-index: 2;
+}
+
+.title-card {
+    display: inline-block;
+    position: relative;
+    padding: 2rem 2.5rem;
+    max-width: fit-content;
+    background: #fff7ea;
+    border: 2px solid #d6b98f;
+    border-radius: 10px;
+    box-shadow:
+        6px 6px 0 #b88f5a,
+        12px 12px 24px rgba(0, 0, 0, 0.18);
+    transform: rotate(-1.5deg);
+}
+
+.title-card::after {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 2px dashed rgba(92, 67, 43, 0.35);
+    border-radius: 6px;
+    pointer-events: none;
+}
+
+.subtitle {
+    margin: 0;
+    font-family: "Courier New", monospace;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #7a5b3a;
+}
+
+.title {
+    margin: 0.35rem 0 0;
+    font-family: Georgia, serif;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 0.95;
+    color: #2a1d12;
+}
+
+.title::after {
+    content: "";
+    display: block;
+    width: 70%;
+    height: 4px;
+    margin-top: 0.45rem;
+    background: #8f5f32;
+    border-radius: 999px;
+    transform: rotate(-1deg);
+}

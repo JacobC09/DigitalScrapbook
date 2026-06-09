@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cindy Blackstock Scrapbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="page-title">
+        <p class="eyebrow">Digital Scrapbook</p>
+        <h1>Cindy Blackstock</h1>
+    </div>
+
+    <div class="toolbar" aria-label="Scrapbook controls">
+        <div class="toolbar-group">
+            <strong>Selected image</strong>
+            <div id="selectedName">None</div>
+        </div>
+        <div class="toolbar-group">
+            <label>Center X %: <input id="controlLeft" type="number" step="0.1"></label>
+            <label>Center Y %: <input id="controlTop" type="number" step="0.1"></label>
+            <label>Rotation: <input id="controlRotate" type="number" step="1">°</label>
+            <label>Scale: <input id="controlScale" type="number" step="0.05" min="0.1" max="3" value="1"></label>
+        </div>
+        <div class="toolbar-group">
+            <label><input id="controlShadowEnabled" type="checkbox" checked> Shadow</label>
+            <label>Preset:
+                <select id="controlShadowPreset">
+                    <option value="soft">Soft</option>
+                    <option value="medium">Medium</option>
+                    <option value="strong">Strong</option>
+                </select>
+            </label>
+            <label>Intensity: <input id="controlShadowIntensity" type="range" min="0.5" max="2" step="0.1" value="1"></label>
+            <label>Blur: <input id="controlShadowBlur" type="range" min="0" max="80" step="1" value="12"></label>
+            <label>Spread: <input id="controlShadowSpread" type="range" min="-20" max="20" step="1" value="0"></label>
+        </div>
+        <div class="toolbar-group">
+            <button id="saveButton">Save Layout</button>
+            <button id="exportButton">Export JSON</button>
+            <button id="exportHtmlButton">Export HTML</button>
+            <button id="importButton">Import JSON</button>
+            <input id="importFile" type="file" accept="application/json" hidden>
+        </div>
+    </div>
+
+    <div id="scrapbook" aria-label="Scrapbook workspace">
+        <img class="scrapbook-item" style="opacity: 70%;" src="../assets/hand.png" alt="Hand" data-name="hand.png">
+        <img class="scrapbook-item" src="../assets/quote.png" alt="Cindy Blackstock" data-name="quote.png">
+        <img class="scrapbook-item" src="../assets/quote2.png" alt="Cindy Blackstock" data-name="quote2.png">
+        <img class="scrapbook-item" src="../assets/portrait.png" alt="Cindy Blackstock" data-name="portrait.png">
+        <img class="scrapbook-item" src="../assets/megaphone.png" alt="Cindy Blackstock" data-name="megaphone.png">
+        <img class="scrapbook-item" src="../assets/tape2.png" alt="tape2" data-name="tape2.png">
+        <img class="scrapbook-item" src="../assets/redacted.png" alt="Cindy Blackstock" data-name="redacted.png">
+        <img class="scrapbook-item" src="../assets/a.png" alt="Cindy Blackstock" data-name="a.png">
+        <img class="scrapbook-item" src="../assets/b.png" alt="Cindy Blackstock" data-name="b.png">
+        <img class="scrapbook-item" src="../assets/b.png" alt="Cindy Blackstock" data-name="b2.png">
+        <img class="scrapbook-item" src="../assets/c.png" alt="Cindy Blackstock" data-name="c.png">
+        <img class="scrapbook-item" src="../assets/mcgill.png" alt="Cindy Blackstock" data-name="mcgill.png">
+        <img class="scrapbook-item" src="../assets/jordanbear.png" alt="Cindy Blackstock" data-name="jordanbear.png">
+        <img class="scrapbook-item" src="../assets/tape1.png" alt="tape1" data-name="tape1.png">
+        <img class="scrapbook-item" src="../assets/tape3.png" alt="tape3" data-name="tape3.png">
+        <img class="scrapbook-item" src="../assets/tape4.png" alt="tape4" data-name="tape4.png">
+        <img class="scrapbook-item" src="../assets/leaf.png" alt="Cindy Blackstock" data-name="leaf.png">
+        <img class="scrapbook-item" src="../assets/watch.png" alt="Cindy Blackstock" data-name="watch.png">
+        <img class="scrapbook-item" src="../assets/ribbon.png" alt="Cindy Blackstock" data-name="ribbon.png">
+        <img class="scrapbook-item" src="../assets/bear.png" alt="Cindy Blackstock" data-name="bear.png">
+        <img class="scrapbook-item" src="../assets/shoes.png" alt="Cindy Blackstock" data-name="shoes.png">
+    </div>
+</body>
+</html>
