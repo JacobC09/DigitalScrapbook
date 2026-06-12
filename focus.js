@@ -45,6 +45,9 @@ const objectDetails = {
 document.addEventListener('DOMContentLoaded', () => {
     const scrapbook = document.getElementById('scrapbook');
     const objectPanel = document.getElementById('objectPanel');
+    const qrToggle = document.getElementById('qrToggle');
+    const qrBackdrop = document.getElementById('qrBackdrop');
+    const qrClose = document.getElementById('qrClose');
     const body = document.body;
     const items = Array.from(scrapbook.querySelectorAll('img'));
 
@@ -100,6 +103,21 @@ document.addEventListener('DOMContentLoaded', () => {
         objectPanel.setAttribute('aria-hidden', 'true');
     }
 
+    function openQrPanel() {
+        clearSelection();
+        qrBackdrop.classList.add('is-visible');
+        qrBackdrop.setAttribute('aria-hidden', 'false');
+        qrToggle.setAttribute('aria-expanded', 'true');
+        qrClose.focus();
+    }
+
+    function closeQrPanel() {
+        qrBackdrop.classList.remove('is-visible');
+        qrBackdrop.setAttribute('aria-hidden', 'true');
+        qrToggle.setAttribute('aria-expanded', 'false');
+        qrToggle.focus();
+    }
+
     function selectItem(item) {
         if (!item || item === scrapbook.querySelector('img.selected')) {
             return;
@@ -153,10 +171,24 @@ document.addEventListener('DOMContentLoaded', () => {
         selectItem(matchedItem);
     });
 
+    qrToggle.addEventListener('click', openQrPanel);
+
+    qrClose.addEventListener('click', closeQrPanel);
+
+    qrBackdrop.addEventListener('click', event => {
+        if (event.target === qrBackdrop) {
+            closeQrPanel();
+        }
+    });
 
 
     document.addEventListener('keydown', event => {
         if (event.key === 'Escape') {
+            if (qrBackdrop.classList.contains('is-visible')) {
+                closeQrPanel();
+                return;
+            }
+
             clearSelection();
         }
     });
