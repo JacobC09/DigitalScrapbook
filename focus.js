@@ -33,7 +33,7 @@ const objectDetails = {
     },
     "mcgill.png": {
         title: "McGill University",
-        description: "McGill represents Cindy Blackstock's academic role as a professor in the School of Social Work. Although she is a respected academic, her work is not limited to research. She has valuable experiences working directly with First nations communities and fighting on the front lines for social reform."
+        description: "Cindy Blackstock is a highly educated and currently works as a professor in the McGill School of Social Work. Although she is a respected academic, her work is not limited to research. She has valuable experiences working directly with First nations communities and fighting on the front lines for social reform."
     },
     "redacted.png": {
         title: "Redacted Government Documents",
